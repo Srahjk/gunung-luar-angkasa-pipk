@@ -1,0 +1,188 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #2a2eec 0%, #7b2ff2 100%);
+    overflow-x: hidden;
+    position: relative;
+}
+
+.space-ornaments {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px #fff;
+    animation: twinkle 2s infinite alternate;
+}
+
+.star:nth-child(2) { width: 3px; height: 3px; animation-delay: 1s;}
+.star:nth-child(3) { width: 5px; height: 5px; animation-delay: 2s;}
+.star:nth-child(4) { width: 2px; height: 2px; animation-delay: 0.5s;}
+
+@keyframes twinkle {
+    to { opacity: 0.5; box-shadow: 0 0 12px 4px #fff;}
+}
+
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.15);
+    box-shadow: 0 0 32px 10px rgba(255,255,255,0.08);
+    z-index: 1;
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+.planet-blue {
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at 60% 40%, #70d7ff 70%, #2a2eec 100%);
+    border-color: #5bcaff44;
+}
+
+.planet-purple {
+    width: 40px; height: 40px;
+    background: radial-gradient(circle at 50% 40%, #e084ff 65%, #7b2ff2 100%);
+    border-color: #e084ff44;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-30px);}
+}
+
+.asteroid {
+    position: absolute;
+    width: 18px; height: 12px;
+    background: #b6a16b;
+    border-radius: 50% 50% 45% 55% / 60% 40% 55% 45%;
+    transform: rotate(-25deg);
+    box-shadow: 3px 2px 8px 0px #77633c60;
+    border: 1px solid #fff3;
+    animation: asteroid-drift 10s linear infinite;
+}
+
+@keyframes asteroid-drift {
+    0% { transform: translateX(0) rotate(-25deg);}
+    100% { transform: translateX(-30px) rotate(-35deg);}
+}
+
+.comet {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: linear-gradient(45deg, #fff 70%, #00e8ff 100%);
+    border-radius: 50%;
+    box-shadow: -40px 10px 40px 0px #00e8ff80;
+    animation: comet-tail 7s linear infinite;
+}
+
+@keyframes comet-tail {
+    0% { opacity: 0.7; }
+    70% { opacity: 0.2;}
+    100% { opacity: 0.7;}
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+    background: rgba(24, 35, 126, 0.85);
+    border-bottom: 2px solid #7b2ff2;
+    position: relative;
+    z-index: 2;
+}
+
+header h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #ffeb3b;
+    text-shadow: 0 0 10px #3949ab;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #c5cae9;
+}
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+#mountains-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.mountain-card {
+    background: rgba(44, 62, 80, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    max-width: 320px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s;
+    z-index: 2;
+    position: relative;
+}
+
+.mountain-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 28px #7b2ff2;
+}
+
+.mountain-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 2px solid #ffeb3b;
+}
+
+.mountain-card h2 {
+    margin: 0.5rem 0 0.2rem 0;
+    color: #ffeb3b;
+    font-size: 1.3rem;
+}
+
+.mountain-card p {
+    font-size: 1rem;
+    color: #e3f2fd;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(44, 62, 80, 0.85);
+    margin-top: 3rem;
+    color: #b0bec5;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    #mountains-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mountain-card {
+        max-width: 95vw;
+    }
+}
